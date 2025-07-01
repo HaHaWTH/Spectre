@@ -23,7 +23,7 @@ public abstract class RenderLivingBaseMixin {
     )
     public void spectre$renderLayers(LayerRenderer<?> instance, EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale, Operation<Void> original) {
         IEntityGhostState ghostState = (IEntityGhostState) entitylivingbaseIn;
-        if (ghostState.isGhost()) {
+        if (ghostState.spectre$isGhost()) {
             try {
                 GlStateManager.disableCull();
                 original.call(instance, entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
@@ -41,7 +41,7 @@ public abstract class RenderLivingBaseMixin {
             cancellable = true
     )
     public void spectre$setBrightness(EntityLivingBase entitylivingbaseIn, float partialTicks, boolean combineTextures, CallbackInfoReturnable<Boolean> cir) {
-        if (((IEntityGhostState) entitylivingbaseIn).isGhost()) {
+        if (((IEntityGhostState) entitylivingbaseIn).spectre$isGhost()) {
             cir.setReturnValue(false);
         }
     }

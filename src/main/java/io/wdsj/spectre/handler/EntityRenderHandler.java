@@ -70,9 +70,9 @@ public class EntityRenderHandler {
                 }
             }
             IEntityGhostState ghostState = (IEntityGhostState) renderedEntity;
-            if (ghostState.isGhost()) return;
+            if (ghostState.spectre$isGhost()) return;
 
-            ghostState.setGhost(true);
+            ghostState.spectre$setGhost(true);
             GlStateManager.pushMatrix();
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
@@ -88,9 +88,9 @@ public class EntityRenderHandler {
         EntityLivingBase renderedEntity = event.getEntity();
         IEntityGhostState ghostState = (IEntityGhostState) renderedEntity;
 
-        if (ghostState.isGhost()) {
+        if (ghostState.spectre$isGhost()) {
             GlobalGhostState.isSpectreRendering = false;
-            ghostState.setGhost(false);
+            ghostState.spectre$setGhost(false);
             GlStateManager.depthMask(true);
             GlStateManager.disableBlend();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

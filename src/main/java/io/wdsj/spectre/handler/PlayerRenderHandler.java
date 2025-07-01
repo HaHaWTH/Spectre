@@ -1,7 +1,6 @@
 package io.wdsj.spectre.handler;
 
 import io.wdsj.spectre.GlobalGhostState;
-import io.wdsj.spectre.Spectre;
 import io.wdsj.spectre.config.Settings;
 import io.wdsj.spectre.duck.IEntityGhostState;
 import net.minecraft.client.Minecraft;
@@ -32,7 +31,7 @@ public class PlayerRenderHandler {
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.color(1.0F, 1.0F, 1.0F, Settings.PlayerSpectreSettings.playerGhostAlpha);
             GlStateManager.depthMask(false);
-            ((IEntityGhostState) renderedPlayer).setGhost(true);
+            ((IEntityGhostState) renderedPlayer).spectre$setGhost(true);
             GlobalGhostState.isSpectreRendering = true;
             GlobalGhostState.spectreAlpha = Settings.PlayerSpectreSettings.playerGhostAlpha;
         }
@@ -47,9 +46,9 @@ public class PlayerRenderHandler {
             return;
         }
 
-        if (((IEntityGhostState) renderedPlayer).isGhost()) {
+        if (((IEntityGhostState) renderedPlayer).spectre$isGhost()) {
             GlobalGhostState.isSpectreRendering = false;
-            ((IEntityGhostState) renderedPlayer).setGhost(false);
+            ((IEntityGhostState) renderedPlayer).spectre$setGhost(false);
             GlStateManager.depthMask(true);
             GlStateManager.disableBlend();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
