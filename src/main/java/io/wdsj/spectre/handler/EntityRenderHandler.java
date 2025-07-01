@@ -47,11 +47,6 @@ public class EntityRenderHandler {
             return;
         }
 
-        Entity riding = clientPlayer.getRidingEntity();
-        if (Settings.EntitySpectreSettings.skipRidingEntity && riding != null) {
-            return;
-        }
-
         if (renderedEntity == null || renderedEntity.equals(clientPlayer) || !shouldEntityBeGhosted(renderedEntity)) {
             return;
         }

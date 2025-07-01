@@ -6,10 +6,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import zone.rong.mixinbooter.IEarlyMixinLoader;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 @IFMLLoadingPlugin.Name("SpectrePlugin")
@@ -21,7 +18,20 @@ public class SpectrePlugin implements IEarlyMixinLoader, IFMLLoadingPlugin {
             put("mixins.spectre.json", () -> true);
         }
     });
-
+    /*static {
+        try {
+            Class<?> launchClassLoaderClass = Class.forName("net.minecraft.launchwrapper.LaunchClassLoader");
+            Field field = launchClassLoaderClass.getDeclaredField("classLoaderExceptions");
+            field.setAccessible(true);
+            Class<?> launchClazz = Class.forName("net.minecraft.launchwrapper.Launch");
+            Field classLoader = launchClazz.getDeclaredField("classLoader");
+            classLoader.setAccessible(true);
+            // noinspection unchecked
+            ((Set<String>) field.get(classLoader.get(null))).remove("org.lwjgl.");
+            System.out.println("Removed LWJGL ClassLoader exception");
+        } catch (Exception ignored) {
+        }
+    }*/
     @Override
     public List<String> getMixinConfigs() {
         List<String> mixins = new ArrayList<>();

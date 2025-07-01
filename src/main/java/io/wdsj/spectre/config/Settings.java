@@ -44,9 +44,6 @@ public class Settings {
         @Config.Name("Skip Target Entity")
         @Config.Comment("If true, the target entity will not be ghosted.")
         public boolean skipTargetEntity = true;
-        @Config.Name("Skip Riding Entity")
-        @Config.Comment("If true, the entity the client is riding will not be ghosted.")
-        public boolean skipRidingEntity = false;
     }
 
     static {
